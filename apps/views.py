@@ -60,9 +60,9 @@ def CommentCreate(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'PATCH', 'DELETE'])
-def CommentDetail(request, pk):
+def CommentDetail(request, id):
     try:
-        comment = Comment.objects.get(pk=pk)
+        comment = Comment.objects.get(id=id)
     except Comment.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 

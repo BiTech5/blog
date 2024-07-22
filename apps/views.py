@@ -14,7 +14,7 @@ def PostCreate(request):
     if request.method=="GET":
         posts=Post.objects.all()
         serializer=PostSerializer(posts, many=True)
-        return Response(serializer.data)
+        return render(request, 'post_create.html', {'posts': posts})
     elif request.method=="POST":
         serializer=PostSerializer(data=request.data)
         if serializer.is_valid():
